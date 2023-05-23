@@ -1,6 +1,9 @@
 package com.example.todolist
 
 import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,36 +14,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.todolist.ui.theme.TodolistTheme
+import java.text.SimpleDateFormat
+import java.util.Date
+import android.widget.Button
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            TodolistTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        findViewById<Button>(R.id.buttonleft).setOnClickListener{
+
         }
+
+        findViewById<Button>(R.id.buttonright).setOnClickListener{
+
+        }
+
+        val dateTextView = findViewById<TextView>(R.id.date)
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val dateString = dateFormat.format(currentDate)
+
+        dateTextView.text = dateString
+
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TodolistTheme {
-        Greeting("Android")
-    }
-}
