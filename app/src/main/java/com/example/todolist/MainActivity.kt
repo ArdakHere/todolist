@@ -22,6 +22,7 @@ import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
+import java.sql.Types.NULL
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +37,13 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonright).setOnClickListener{
 
         }*/   //  IMPLEMENT SWITCHING BETWEEN DAYS USING THESE BUTTONS
-        var todoList = mutableListOf(ToDo("hey", true)
 
+        var todoList = mutableListOf(
+            ToDo("Call James", true),
+            ToDo("Buy a car", false)
         )
+
+
 
         val dateTextView = findViewById<TextView>(R.id.date)
         val currentDate = Date()
@@ -57,9 +62,11 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.addbutton).setOnClickListener{
-            val text = findViewById<EditText>(R.id.etTasks).toString()
-            todoList.add(todoList.size, ToDo(text, false))
-            adapter.notifyItemInserted(todoList.size-1)
+            var text = findViewById<EditText>(R.id.etTasks).text.toString()
+            val taskToAdd = ToDo(text, false)
+            todoList.add(taskToAdd)
+            adapter.notifyItemInserted(todoList.size)
+            text = " "
         }
     }
 }

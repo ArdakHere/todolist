@@ -25,9 +25,10 @@ class ToDoAdapter(
      override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
 
         holder.itemView.apply {
-            val textView = holder.itemView.findViewById<TextView>(R.id.textView)
-            val isDone = holder.itemView.findViewById<CheckBox>(R.id.checkBox)
-            textView.text = tasks[position].task
+
+            val tvText = findViewById<TextView>(R.id.textView)
+            val isDone = findViewById<CheckBox>(R.id.checkBox)
+            tvText.text = tasks[position].task
             isDone.isChecked = tasks[position].isCompleted
         }
 
