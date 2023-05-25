@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:text="PREV"
+        android:text="@string/prevbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +20,7 @@
         android:id="@+id/buttonright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
+        android:text="@string/nextbutton"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@id/buttonleft"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +39,31 @@
         tools:layout_editor_absoluteY="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTasks"
         android:layout_width="353dp"
         android:layout_height="569dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etTasks"
+        android:layout_height="48dp"
+        android:layout_width="230dp"
+        android:layout_marginTop="10dp"
+        android:hint="New Task"
+        app:layout_constraintTop_toBottomOf="@id/rvTasks"
+        app:layout_constraintStart_toStartOf="@id/rvTasks" />
+
+    <Button
+        android:id="@+id/addbutton"
+        android:text="@string/addbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/etTasks"
+        app:layout_constraintTop_toTopOf="@id/etTasks"
+        android:layout_marginStart="30dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

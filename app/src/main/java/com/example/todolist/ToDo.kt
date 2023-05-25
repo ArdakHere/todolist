@@ -1,8 +1,6 @@
 package com.example.todolist
 
-class ToDo (
+data class ToDo (
      val task: String,
-     val isCompleted: Boolean
-){
-
-}
+     var isCompleted: Boolean
+)
