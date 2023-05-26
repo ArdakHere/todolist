@@ -1,7 +1,12 @@
 package com.example.todolist
 
 
+import android.annotation.SuppressLint
+import android.content.ClipData.Item
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -25,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import java.sql.Types.NULL
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         }*/   //  IMPLEMENT SWITCHING BETWEEN DAYS USING THESE BUTTONS
 
-        var todoList = mutableListOf(
+        val todoList = mutableListOf(
             ToDo("Call James", true),
             ToDo("Buy a car", false)
         )
@@ -62,12 +68,19 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.addbutton).setOnClickListener{
-            var text = findViewById<EditText>(R.id.etTasks).text.toString()
+            val text = findViewById<EditText>(R.id.etTasks).text.toString()
             val taskToAdd = ToDo(text, false)
             todoList.add(taskToAdd)
             adapter.notifyItemInserted(todoList.size)
-            text = " "
+            val text2 = findViewById<EditText>(R.id.etTasks).setText("")
+            var text3 = findViewById<EditText>(R.id.etTasks)
+            hideKeyboard(text3)
         }
     }
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
 
